@@ -38,7 +38,7 @@ namespace AdventOfCode.Day1
         //Hard code reads fron data.txt
         private static int[] ReadFromFile()
         {
-            return Array.ConvertAll(System.IO.File.ReadAllLines(inputfile), int.Parse);
+            return Array.ConvertAll(File.ReadAllLines(inputfile), int.Parse);
         }
 
         public static void GetDay1Answer()
