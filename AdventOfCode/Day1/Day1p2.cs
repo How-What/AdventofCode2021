@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace AdventOfCode.Day1
 {
     //Day 1 part 2: https://adventofcode.com/2021/day/1#part2
