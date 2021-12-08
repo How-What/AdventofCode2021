@@ -36,7 +36,7 @@ namespace AdventOfCode.Day1
 
         public static void GetDay1Answer()
         {
-            Console.WriteLine("Day1: {0}", SonarSweep(ReadFromFile()));
+            Console.WriteLine("Day1 Part 1: {0}", SonarSweep(ReadFromFile()));
         }
     }
 }

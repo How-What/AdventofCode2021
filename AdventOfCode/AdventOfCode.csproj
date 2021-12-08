@@ -7,7 +7,7 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-		<None Include = ".\Day1\*.txt">
+		<None Include=".\Day1\*.txt">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
