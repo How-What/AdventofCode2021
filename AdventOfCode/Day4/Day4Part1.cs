@@ -11,8 +11,7 @@ namespace AdventOfCode.Day4
         {
             var boards = GetBingoBoards();
             var board = GetBingoBoard(boards);
-            var bingoBoard = GetIndividualBoard(board);
-            
+
         }
 
         private static List<string> GetBingoBoards()
@@ -39,40 +38,38 @@ namespace AdventOfCode.Day4
             return list;
         }
 
-        private static List<Dictionary<int, bool>> GetBingoBoard(List<string> boards)
+        private static List<BingoBoard> GetBingoBoard(List<string> boards)
         {
-            List<Dictionary<int, bool>> retres = new List<Dictionary<int, bool>>();
-            Dictionary<int, bool> result = new Dictionary<int,bool>();
+            List<BingoBoard> list = new List<BingoBoard>();
+            
+            int i = 0;
+            int[,] board = new int[5, 5];
             foreach (string line in boards)
             {
-                foreach (var i in Regex.Split(line, @"\s+"))
+                int j = 0;
+                foreach (var num in Regex.Split(line, @"\s+"))
                 {
                     try
                     {
-                        result.Add(Int32.Parse(i), false);
+                        board[i, j] = Int32.Parse(num);
                     }
                     catch
                     {
                         continue;
                     }
-                    
+                    j++;
                 }
-                retres.Add(result);
-                result = new Dictionary<int,bool>();
+                if (i == 4)
+                {
+                    list.Add(new BingoBoard(board));
+                    i=0;
+                }
+                else
+                {
+                    i++;
+                }
             }
-
-            return retres;
-        }
-        private static List<List<Dictionary<int, bool>>> GetIndividualBoard(List<Dictionary<int, bool>> board)
-        {
-            var result = new List<List<Dictionary<int,bool>>>();
-
-            for(int i = 0; i < board.Count; i+=5)
-            {
-                result.Add(board.GetRange(i, 5));
-            }
-
-            return result;
+            return list;
         }
     }
 }
