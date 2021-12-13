@@ -25,10 +25,12 @@ namespace AdventOfCode.Day1
             return countOfIncreases;
         }
 
-        private static int ThreeSum(int a, int b, int c)
-        {
-            return a + b + c;  
-        }
+        //private static int ThreeSum(int a, int b, int c)
+        //{
+        //    return a + b + c;  
+        //}
+
+        private static Func<int, int, int, int> ThreeSum = (a, b, c) => a + b + c;
 
         //Hard code reads fron data.txt
         private static int[] ReadFromFile()
