@@ -15,6 +15,8 @@ Day2Part2.GetAnswer();
 Console.WriteLine("");
 
 Day3Part1.GetAnswer();
-Day3part2.GetAnswer(); 
+Day3part2.GetAnswer();
+
+Console.WriteLine("");
 
 Day4Part1.GetAnswer();

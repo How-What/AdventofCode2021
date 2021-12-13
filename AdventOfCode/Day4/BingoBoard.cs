@@ -16,7 +16,8 @@ namespace AdventOfCode.Day4
 
         public BingoBoard(int[,] boardnums)
         {
-            idcounter++;
+            Boardid = idcounter;
+            Interlocked.Increment(ref idcounter);
             Board = boardnums;
             MarkedBoard = new bool[5,5]
                 { { false,false,false,false,false},
@@ -26,7 +27,7 @@ namespace AdventOfCode.Day4
                 { false,false,false,false,false},};
         }
         
-        public bool RegisterNumber(int n)
+        public void RegisterNumber(int n)
         {
             for (int i = 0; i < 5; i++)
             {
@@ -38,7 +39,6 @@ namespace AdventOfCode.Day4
                     }
                 }
             }
-            return IsBingo();
         }
 
         public bool IsBingo()
@@ -48,7 +48,7 @@ namespace AdventOfCode.Day4
                 int marked = 0;
                 for (int j = 0; j < 5; j++)
                 {
-                    if (MarkedBoard[i, j] == false)
+                    if (!MarkedBoard[i, j])
                     {
                         break;
                     }
@@ -65,7 +65,7 @@ namespace AdventOfCode.Day4
                 int marked = 0;
                 for (int j = 0; j < 5; j++)
                 {
-                    if (MarkedBoard[j,i] == false)
+                    if (!MarkedBoard[j,i])
                     {
                         break;
                     }

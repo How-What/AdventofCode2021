@@ -7,14 +7,31 @@ namespace AdventOfCode.Day4
         private static string inputfile = @".\Day4\input.txt";
         private static string[] bingoCalls = File.ReadLines(inputfile).First().Split(',');
 
-        internal static void GetAnswer()
-        {
-            var boards = GetBingoBoards();
-            var board = GetBingoBoard(boards);
 
+        public static void GetAnswer()
+        {
+            Console.WriteLine($"Day 4 Part 1: {GetScore()}");
+        }
+        private static int GetScore()
+        {
+            int answer;
+            List<BingoBoard> boards = GetBingoBoard(ExtractBingoList());
+            foreach (string i in bingoCalls)
+            {
+                int num = int.Parse(i);
+                foreach(BingoBoard board in boards)
+                {
+                    board.RegisterNumber(num);
+                    if (board.IsBingo())
+                    {
+                        return board.TotalUnMarked() * num;
+                    }
+                }
+            }
+            return 0;
         }
 
-        private static List<string> GetBingoBoards()
+        private static List<string> ExtractBingoList()
         {
             bool firstpass = true;
             string pattern = @"([0-9])+";
@@ -62,6 +79,7 @@ namespace AdventOfCode.Day4
                 if (i == 4)
                 {
                     list.Add(new BingoBoard(board));
+                    board = new int[5, 5];
                     i=0;
                 }
                 else
